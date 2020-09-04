@@ -16,11 +16,11 @@ DB_PASSWORD=<your_db_password_without_password>
 
 ## 3. Database used is PostgreSQL, make sure you add your own credentials in the .env file
 
-## 4. # Serve API on localhost:8000
+## 4. Serve API on localhost:8000
 ```sh
 python leadmanager/manage.py runserver
 ```
 
 ## 5. Use postman to test it.
 
-Extensive documentation with examples [](here).
+Extensive documentation with examples [here](#).
