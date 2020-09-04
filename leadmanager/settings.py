@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os, dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -19,8 +20,13 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
+# Add .env variables anywhere before SECRET_KEY
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8&wid(@x8g4ko&v*z@2(jlhr4^hy2svugp#^$82zcgd^d!0d9j'
+SECRET_KEY = os.environ['SECRET_KEY'] # Instead of your actual secret key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,12 +90,12 @@ WSGI_APPLICATION = 'leadmanager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # Replace with your desired database name
-        'NAME': 'leads',
-        # Replace username with your desired user name
-        'USER': 'postgres',
-        # Replace password with your desired password
-        'PASSWORD': 'root',
+        # Replace with your desired name in the .env file
+        'NAME': os.environ['DB_NAME'],
+        # Replace username with your user name in the .env file
+        'USER': os.environ['DB_USER'],
+        # Replace password with your password in the .env file
+        'PASSWORD': os.environ['DB_PASSWORD'],
         # Replace 127.0.0.1 with the PostgreSQL host
         'HOST': '127.0.0.1',
         # Replace 5432 with the PostgreSQL configured port
