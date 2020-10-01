@@ -1,4 +1,4 @@
-# Lead Manager API built using Django REST Framework
+## Lead Manager API built using Django REST Framework
 
 ### 1. Install dependencies
 ```sh
